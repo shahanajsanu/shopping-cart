@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <title>Shopping Cart</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+   <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+
+   <section>
+      <div class="container">
+         <div class="cart">
+            <div class="col-md-12 col-lg-10 mx-auto">
+               <div class="cart-item" id="item-cart">
+                  <div class="row">
+                     <div class="col-md-7 center-item">
+                        <img src="images/product-1.png" alt="">
+                        <h5>iPhone 11 128GB Black</h5>
+                     </div>
+
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="reduceItem" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="itemQuantity" type="text" class="form-control text-center" value="1">
+                           <button id="addItem" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                        </div>
+                        <h5>$ <span id="itemPriceTotal">1219</span></h5>
+                        <img id="remove-item" src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item" id="reduce-cart">
+                  <div class="row">
+                     <div class="col-md-7 center-item mx-auto">
+                        <img src="images/product-2.png" alt="">
+                        <h5>iPhone 11 Silicone Case - Black</h5>
+                     </div>
+                     <div class="col-md-5 center-item">
+                        <div class="input-group number-spinner">
+                           <button id="reduceCase" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="caseQuantity" type="text" class="form-control text-center" value="1">
+                           <button id="addCase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+
+                        </div>
+                        <h5>$ <span id="casePriceTotal">59</span></h5>
+                        <img id="remove-case" src="images/remove.png" alt="" class="remove-item">
+                     </div>
+                  </div>
+               </div>
+
+               <div class="cart-item">
+                  <div class="row">
+
+                     <div class="col-md-8">
+                        <h5>Subtotal: </h5>
+                        <h5>Tax:</h5>
+                        <h5>Total:</h5>
+                     </div>
+
+                     <div class="col-md-4 status">
+                        <h5>$ <span id="sub-total">1,278</span></h5>
+                        <h5>$ <span id="tax">0</span></h5>
+                        <h5>$ <span id="total-amount">1,278</span></h5>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-md-12 pt-4 pb-4">
+                  <button type="button" class="btn btn-success check-out">Check Out</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+   <!--javascript-->
+   <script>
+      
+      //addItem event handler
+
+      const addItem = document.getElementById("addItem");
+      addItem.addEventListener("click", function(){
+         const itemQuantity = document.getElementById("itemQuantity").value++;
+         const itemPriceTotal = document.getElementById("itemPriceTotal").innerText;
+         const itemPrice = parseFloat(itemPriceTotal);
+         const addItem = itemPrice + 1219;
+
+       
+         document.getElementById("itemPriceTotal").innerText = addItem;
+
+         const subTotal = document.getElementById("sub-total").innerText;
+         const totalPrice = parseFloat(subTotal);
+         const totalAmount = totalPrice +  1219;
+
+         document.getElementById("sub-total").innerText = totalAmount;
+         document.getElementById("total-amount").innerText = totalAmount;
+      })
+
+      const minusItem = document.getElementById("reduceItem");
+      minusItem.addEventListener("click", function(){
+            const itemQuantity = document.getElementById("itemQuantity").value--;
+            const itemPriceTotal = document.getElementById("itemPriceTotal").innerText;
+            const itemPrice =  parseFloat(itemPriceTotal);
+            const reduceItem = itemPrice - 1219;
+            
+
+            document.getElementById("itemPriceTotal").innerText = reduceItem;
+
+            const subTotal = document.getElementById("sub-total").innerText;
+            const totalPrice = parseFloat(subTotal);
+            const minusAmount = totalPrice - 1219;
+
+            document.getElementById("sub-total").innerText = minusAmount;
+            document.getElementById("total-amount").innerText = minusAmount;
+      })
+
+      //case Item  event handler
+
+      const addCaseItem = document.getElementById("addCase");
+      addCaseItem.addEventListener("click", function(){
+         const caseQuantity = document.getElementById("caseQuantity").value++;
+         const casePriceTotal = document.getElementById("casePriceTotal").innerText;
+         const casePrice = parseFloat(casePriceTotal);
+         const addCase = casePrice + 59;
+
+       
+         document.getElementById("casePriceTotal").innerText = addCase;
+
+         const subTotal = document.getElementById("sub-total").innerText;
+         const totalPrice = parseFloat(subTotal);
+         const totalAmount = totalPrice +  59;
+
+         document.getElementById("sub-total").innerText = totalAmount;
+         document.getElementById("total-amount").innerText = totalAmount;
+      })
+
+      const reduceCaseItem = document.getElementById("reduceCase");
+      reduceCaseItem.addEventListener("click", function(){
+            const caseQuantity = document.getElementById("caseQuantity").value--;
+            const casePriceTotal = document.getElementById("casePriceTotal").innerText;
+            const casePrice =  parseFloat(casePriceTotal);
+            const reduceCase = casePrice - 59 ;
+            
+
+            document.getElementById("casePriceTotal").innerText = reduceCase;
+
+            const subTotal = document.getElementById("sub-total").innerText;
+            const totalPrice = parseFloat(subTotal);
+            const minusAmount = totalPrice - 59 ;
+
+            document.getElementById("sub-total").innerText = minusAmount;
+            document.getElementById("total-amount").innerText = minusAmount;
+      })
+
+      // remove event handler
+
+   const removeItem = document.getElementById("remove-item");
+   removeItem.addEventListener("click", function(){
+
+      const itemPriceAmount = document.getElementById("itemPriceTotal").innerText;
+      const subTotal = document.getElementById("sub-total").innerText;
+      const totalPrice = parseFloat(subTotal);
+      const totalAmount =  totalPrice - itemPriceAmount;
+
+      document.getElementById("sub-total").innerText = totalAmount;
+      document.getElementById("total-amount").innerText = totalAmount;
+
+      const removeItem = document.getElementById("item-cart");
+      removeItem.style.display="none"
+   })
+
+   const removeCase = document.getElementById("remove-case");
+   removeCase.addEventListener("click", function(){
+
+      const casePriceAmount = document.getElementById("casePriceTotal").innerText;
+      const subTotal = document.getElementById("sub-total").innerText;
+      const totalPrice = parseFloat(subTotal);
+      const totalAmount =  totalPrice - casePriceAmount;
+
+      document.getElementById("sub-total").innerText = totalAmount;
+      document.getElementById("total-amount").innerText = totalAmount;
+
+      const removeCase = document.getElementById("reduce-cart");
+      removeCase.style.display="none"
+   })
+
+   </script>
+</body>
+
+</html>
